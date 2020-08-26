@@ -12,4 +12,8 @@ a script to a different collection please be sure to keep appropiate author info
 * [Asm-to-Nc](https://github.com/Cooperw/ctf/blob/master/2020-08-05-init/AsmToNc/return7.py)
 * [Nc scripted brute forcing](https://github.com/Cooperw/ctf/blob/master/2020-08-05-init/NcBrute-CaaS/CaaS.py)
 * [Stuff I typicall install on fresh images](https://github.com/Cooperw/ctf/blob/master/install.sh)
+
+# External Resources
+* [VMware Downloads](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html)
+* [Kali (vmware) Downloads](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)
 * [p4-team's crypto-commons](https://github.com/p4-team/crypto-commons)
