@@ -3,7 +3,7 @@ Hosted by Trustwave SpiderLabs and PaloAlto Networks
 [https://spiderlabsctf.com](https://spiderlabsctf.com/)
 
 
-* Team: scriptkitty, cooper, n0decaf, 008xABC, dr_ALE, aidden
+* Team (satcat): scriptkitty, cooper, n0decaf, 008xABC, dr_ALE, aidden
 * Rank: 33/189 (top %17)
 * Score: 1225/1500
 
