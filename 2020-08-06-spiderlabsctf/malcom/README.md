@@ -1,4 +1,4 @@
-# Malcom
+# Malcom (also my first writeup on here)
 
 In the challenge we got [malcom.py](malcom.py) and [ciphertext](ciphertext).
 
