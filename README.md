@@ -1,7 +1,7 @@
 # This is my personal collection of CTF challenges and writeups
 
-Quick links to various types of attacks. I may not be the author for all of these so please check headers for author information. Feel free to use whatever, if you are adding
-a script to a collection just be sure to leave the authors name on it.
+Quick links to various types of attacks. I may not be the author for all of these so please check headers for author information. Feel free to use whatever but if you are adding
+a script to a different collection please be sure to keep appropiate author information.
 
 # Crypto
 * [AES-Double-Encryption](https://github.com/Cooperw/ctf/tree/master/2020-08-06-spiderlabsctf/malcom)
