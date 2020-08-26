@@ -1,7 +1,5 @@
 # SpiderLabs CTF
-Hosted by Trustwave SpiderLabs and PaloAlto Networks
-
-[https://spiderlabsctf.com](https://spiderlabsctf.com/)
+Hosted by Trustwave SpiderLabs and PaloAlto Networks [https://spiderlabsctf.com](https://spiderlabsctf.com/)
 
 
 * Team: cooper, 008xABC
