@@ -1,4 +1,4 @@
-#Malcom
+# Malcom
 
 In the challenge we got [malcom.py](malcom.py) and [ciphertext](ciphertext).
 
@@ -28,9 +28,9 @@ key2 = randkey()
 ct = encrypt(secret, key1, key2)
 ```
 
-At first I attempted to bruteforce the flag by performing ~16mil decryptions each with another ~16mil decryptions which resulted in an O<sup>2</sup> time complexity which ultimately failed.
+At first I attempted to bruteforce the flag by performing ~16mil decryptions each with another ~16mil decryptions which resulted in an O<sup>2</sup> time complexity which ultimately failed (somthing like 32 years of cracking time with my rig).
 After a bit of research I found that given a key size of 'k' and knowledge of part of the plaintext, the time to break doubly encrypted data is in fact 2<sup>k</sup> + 2<sup>k</sup> = 2<sup>k+1</sup> 
-NOT 2<sup>k</sup> * 2<sup>k</sup> = 2<sup>k+k</sup> by using something called a meet-in-the-middle attack.
+**NOT** 2<sup>k</sup> * 2<sup>k</sup> = 2<sup>k+k</sup> by using something called a **meet-in-the-middle** attack.
 
 A meet-in-the-middle attack works by performing 2<sup>k</sup> decryptions on the ciphertext, 2<sup>k</sup> encryptions on a portion of the paintext, and then taking both lists
 and finding the two keys that give similar blocks of ciphertext.
@@ -41,13 +41,13 @@ ct = '1ae4c56852fde8ca7ec9823587550aa2be3c839caa0a565c6a299e7a5e2cc9998302960abc
 pt = 'Well done! your flag is: <redacted>'
 ```
 
-Will generate entries:
+Will generate entries (middle-ciphertext[:20]:key):
 ```
-# format: middle-ciphertext[:20]:key
 629ebe03d08600144418:13896922
 629ebe03d08600144418:15626165
 ```
 
 Then simply use the two keys (15626165,13896922) to doubly decrypt the ciphertext
+
 Well done! your flag is: `FLAG-dcab2ae52644a3563fd7daa4adbba3d6`
 
