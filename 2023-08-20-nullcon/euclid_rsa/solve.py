@@ -52,12 +52,6 @@ magic_d_1 = 1
 magic_d_2 = 1
 
 p = Decimal(pow(sn1, 2) + pow(sd1, 2)) / Decimal(magic_d_1)
-'''
-if "." in str(p):
-    print("p is not an integer")
-else:
-    print("p is integer")
-'''
 print("p")
 print(int(p))
 
