@@ -19,6 +19,7 @@ _ i d = 1 2 3 4 5 6 7 8 & a d m  i n = 0 & c o l o r = A A A A A  A A A A A A A 
 ```
 
 Feed in "in=1" and pad the rest of that ECB block with "&" (goal is to obtain the 484 block)
+The extra "&" were to prevent server execution/parsing errors when reading the cookie, a byproduct is that we will end up creating a new cookie field named "in". We need to ensure that we retain the color field for proper execution.
 ```
 AAAAAin=1&&&&&&&&&&&& (http://52.59.124.14:10017/color/AAAAAin=1&&&&&&&&&&&&)
 _ i d = 1 2 3 4 5 6 7 8 & a d m  i n = 0 & c o l o r = A A A A A  i n = 1 & & & & & & & & & & & &
