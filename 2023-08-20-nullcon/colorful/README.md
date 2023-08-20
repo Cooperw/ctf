@@ -8,6 +8,11 @@ Known cookie contents:
 _id=12345678&admin=0&color=ffff00&
 ```
 
+Sample Cookie
+```
+session 7a736eda3aa4774894bd61f6bf717a7042423aa9a1b5afc6a7ea479a1d0bd98b /
+```
+
 Start with padding to isolate the ECB blocks
 ```
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA (http://52.59.124.14:10017/color/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA)
