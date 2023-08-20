@@ -1,3 +1,7 @@
+This challenge involved using predictable AES.ECB blocks to reverse 
+engineer an encrypted cookie to take control of an "admin" field and set 
+it to "1"
+
 
 Known cookie contents: 
 ```
