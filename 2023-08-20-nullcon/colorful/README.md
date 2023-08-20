@@ -1,6 +1,4 @@
-This challenge involved using predictable AES.ECB blocks to reverse 
-engineer an encrypted cookie to take control of an "admin" field and set 
-it to "1"
+This challenge involved using predictable AES.ECB blocks to reverse engineer an encrypted cookie to take control of an "admin" field and set it to "1". The python Flask app contained an endpoint for setting the color value within the session cookie, craft payloads to discover the appropriate blocks and then use those to construct a new cookie
 
 
 Known cookie contents: 
