@@ -62,12 +62,7 @@ print("p")
 print(int(p))
 
 q = Decimal(pow(sn2, 2) + pow(sd2, 2)) / Decimal(magic_d_2)
-'''
-if "." in str(q):
-    print("q is not an integer")
-else:
-    print("q is integer")
-'''
+
 print("q")
 print(int(q))
 
