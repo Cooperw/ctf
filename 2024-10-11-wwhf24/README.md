@@ -51,7 +51,7 @@ https://gchq.github.io/CyberChef/#recipe=From_Binary('Space',8)&input=MDEwMTAwMT
 
 ## Challenge 2 | Serial
 
-1. Plug your badge into a computer via usb-c and utilize a serial monitor of your choice to monitor serial messages.
+1. Plug your badge into a computer via usb-c and utilize a serial monitor of your choice to monitor messages.
 ```bash
 ls /dev/tty.* # use this cmd to get a list of connected usb devices
 screen /dev/tty.usbserial-110 115200
@@ -225,6 +225,19 @@ print("Time elapsed = ", end_time-start_time)
 
 ```
 
+An example of a keys wordlist
+```
+ab110000003633613566643539363838
+11000000363361356664353936383865
+00000036336135666435393638386530
+00003633613566643539363838653034
+00363361356664353936383865303461
+36336135666435393638386530346137
+33613566643539363838653034613700
+61356664353936383865303461370078
+35666435393638386530346137007856
+```
+
 Then load in the 16byte and 32byte wordlists into the breaker script.
 ```python
 # Brute AES:ECB_decrypt :: GPT-4o
@@ -349,6 +362,18 @@ if __name__ == "__main__":
     main()
 ```
 
+```
+python brute_aes_rev.py keys_2.txt keys_3.txt
+[*] Total keys loaded: 982986
+[*] Key Found at index 228757: 36336135666435393638386530346137
+[*] Key (Bytes): b'63a5fd59688e04a7'
+[*] Key (ASCII): 63a5fd59688e04a7
+[*] Decrypted Plaintext: KEEP ALIVE
+```
+
+Final Decrypt:
+https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,false)AES_Decrypt(%7B'option':'Hex','string':'36336135666435393638386530346137'%7D,%7B'option':'Hex','string':''%7D,'ECB','Raw','Raw',%7B'option':'Hex','string':''%7D,%7B'option':'Hex','string':''%7D)From_Hex('Auto')&input=V2ZGSUFtcWpSN1JqSUo4ZnNQZGtlVUtJVXhxcmtlWlNrOUcyK3JVS3RWdjVIMVhPbXJFV3BaanlSVXRaVkwyQVhwNHlSRndMa2M0QzlNZ25Cd2FyT0E9PQ
+
 ## Bonus Points! (100)
 
 From the firmware we discovered the POST endpoint used by the scanners to claim bounties when an attendees badge was read via NFC. After playing with the request body and attaching a Bearer token extracted from firmware, we managed to craft the proper requests to grant bounties to any badge!
@@ -369,7 +394,7 @@ Bearer W8nqEekeZ2a4LeXVVuQ2yNYwRrsDYT
 }
 ```
 
-- todo talk about builing mac wordlists to isolate MAC regions to locate Event 5"
+- todo talk about building mac wordlists to isolate MAC regions to locate Event 5"
 
 In our quest to grant ourselves "Event 5" we managed to uncover a hidden vendor bounty worth 100 points from scanner EC:DA:3B:5E:17:30 which allowed us to have 26/25 vendor bounties, effectively pushing our scores above the standard achievable score.
 
