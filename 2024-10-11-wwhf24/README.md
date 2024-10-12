@@ -1,4 +1,4 @@
-Wild West Hacking Fest 2024 Badge Challenge
+# Wild West Hacking Fest 2024 Badge Challenge
 
 Team
 - Stephen Glom
