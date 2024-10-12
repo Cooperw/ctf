@@ -7,6 +7,9 @@ Team
 - Rob Sullivan
 - Cooper Wiegand (@cooperw)
 
+
+_todo talk about how do dump firmware and then pull a copy from the hosted aws S3 bucket_
+
 ## Challenge 1 | The UFO
 
 ### Steps to solve (Visual path)
