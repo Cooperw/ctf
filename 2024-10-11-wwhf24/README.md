@@ -69,10 +69,7 @@ TPY_net1pvg*ywf.cjk # password
 3. Construct a CyberChef recipe: FromBinary_8
 https://gchq.github.io/CyberChef/#recipe=From_Binary('Space',8)&input=MDEwMTAwMTEKMDEwMDEwMDEKMDEwMDAxMTEKMDExMTEwMTEKMDExMDAwMTEKMDAxMTAxMDAKMDExMDExMTAKMDExMTAxMDAKMDEwMTExMTEKMDExMTAwMTEKMDExMTAxMDAKMDAxMTAwMDAKMDExMTAwMDAKMDEwMTExMTEKMDExMTAxMDAKMDExMDEwMDAKMDAxMTAwMTEKMDEwMTExMTEKMDExMTAwMTEKMDAxMTAwMDEKMDExMDAxMTEKMDExMDExMTAKMDAxMTAxMDAKMDExMDExMDAKMDExMTExMDE
 
-### Steps to solve (Firmware path) [todo]
-
-- todo esp tools firmware dump
-- screenshot of S I G { after manually inspecting the assembly
+_The flag is also visible in some tools like IDA or Ghidra but it not easily 'strings-able' thanks to some obfuscation. Some of my team members found the flag via firmware before we joined forces._
 
 ## Challenge 2 | Serial
 
@@ -424,7 +421,7 @@ Bearer W8nqEekeZ2a4LeXVVuQ2yNYwRrsDYT
 }
 ```
 
-- todo talk about building mac wordlists to isolate MAC regions hoping to locate Event 5"
+- todo talk about building MAC wordlists to isolate OUI regions hoping to locate Event 5"
 
 In our quest to grant ourselves "Event 5" we managed to uncover a hidden vendor bounty worth 100 points from scanner EC:DA:3B:5E:17:30 which allowed us to have 26/25 vendor bounties, effectively pushing our scores above the standard achievable score.
 
