@@ -8,7 +8,21 @@ Team
 - Cooper Wiegand / shiloh (@cw0)
 
 
-_todo: steup, cmds to dump firmware and then how do pull a copy from the hosted aws S3 bucket_
+_todo: intro, setup, cmds to dump firmware and then how to pull a copy from the hosted aws S3 bucket_
+
+Running the following cmd on a firmware dump will give you an S3 bucket containing the badge binary and also happens to contain WIFI creds for the badge network if you are interested in spinning up an access point at home
+```bash
+> strings wwhf2024.bin | grep http -A 4
+https://wwhf2024.s3.amazonaws.com/v2/
+wwhf2024.bin
+WWHF Badges
+77HackTheEsp3too@
+...
+```
+
+Firmware: https://wwhf2024.s3.amazonaws.com/v2/wwhf2024.bin
+
+WIFI: WWHF Badges :: 77HackTheEsp3too@
 
 ## Challenge 1 | The UFO
 
