@@ -10,7 +10,7 @@ Team
 
 _todo: intro, setup, cmds to dump initial firmware_
 
-We discovered this data by manually scrolling through firmware but running the following cmd on a firmware dump will give you an S3 bucket containing the official badge binary, WIFI creds for the badge network if you are interested in spinning up an access point at home, and the connection data for MQTT
+We discovered the following data by manually scrolling through firmware but running the following cmd on a firmware dump will give you an S3 bucket containing the official badge binary, WIFI creds for the badge network if you are interested in spinning up an access point at home, and the connection data for MQTT
 ```bash
 strings wwhf2024.bin | grep "\.com" -A 4
 ```
