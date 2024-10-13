@@ -3,7 +3,7 @@
 Team
 - Stephen Glom / Logix (@ladderlogic)
 - Victor Yakovlyev / chickn nuggies (@chickinnuggies)
-- Jay Sullivan / vort (@vort4282)
+- Jon Sullivan / vort (@vort4282)
 - Rob Sullivan (@rsulliva)
 -  [author] Cooper Wiegand / shiloh (@cw0)
 
