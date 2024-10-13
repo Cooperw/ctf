@@ -205,6 +205,8 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,fal
 ### Phase 4B: Sliding Windows and bit of Brute (origional path)
 After dumping memory and failing to locate valid keys on initial visual inspection (at 3am it did not cross our minds to run a CC:FromHex(hex_string) on the suspicious strings). Instead we aimed to create some wordlists containing all possible keys from the memory dumps and then ran a brute force operation to locate a known Plaintext ("KEEP ALIVE") from a known CipherText ("pxzvI67XgjxDyL0SRR2S2g=="). In theory, if you take every 32 byte segment of data in memory and the AES key is 32 bytes then eventually you will find the key, the sliding window theory genenerates far fewer keys than a traditional brute force solution.
 
+_We tried a combination of 8byte/16byte keys for DES and 16byte/32byte keys for AES_
+
 First make your wordlists
 ```python
 # Keymaker :: GPT-4o
