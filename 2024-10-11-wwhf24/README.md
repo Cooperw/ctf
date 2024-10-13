@@ -7,6 +7,8 @@ Team
 - Rob Sullivan (@rsulliva)
 -  [author] Cooper Wiegand / shiloh (@cw0)
 
+## Intro
+Badge Website & Leaderboard: https://hardwarelabs.io/
 
 _todo: intro, setup, cmds to dump initial firmware_
 
