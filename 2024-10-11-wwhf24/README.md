@@ -217,7 +217,7 @@ from binascii import b2a_hex
 
 #- Config variables 
 filename="out.bin"
-aes_key_size=16
+aes_key_size=16 # 8, 16, 32
 
 #- Variables related to file processing
 file_offset=0;
