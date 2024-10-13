@@ -146,7 +146,7 @@ Mystery Signal captured from broadcasts (~every 30 mins when active?)
 _We suspected that the badge was capable of decrypting the data blob in order to process the broadcasts and found that both DES and AES:ECB generate block data consistent with variance and length observed in other MQTT messages_
 
 ### Phase 3: Dump the RAM, phising for keys!
-- todo mention how datasheets showed us which memory segments to dump (the sullivans discovered the following memory segments)
+- todo mention how the sullivans discovered datasheets containing memory segments to dump
 ```bash
 -rw-r--r--@  1 cooper  staff    64K Oct 11 01:51 memdumptest5-0x3FF0_0000.bin
 -rw-r--r--@  1 cooper  staff   384K Oct 11 01:52 memdumptest5-0x4038_0000.bin
