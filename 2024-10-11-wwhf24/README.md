@@ -44,7 +44,7 @@ TPY_net1pvg*ywf.cjk # password
 
 ## Challenge 1 | The UFO
 
-### Steps to solve (Visual path)
+### Steps to solve
 1. Begin by powering your badge and then recording the LED sequences flashing on the UFO.
 
 2. Transcribe the 8 LEDS to binary strings
@@ -203,7 +203,7 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,fal
 
 
 ### Phase 4B: Sliding Windows and bit of Brute (origional path)
-After dumping memory and failing to locate valid keys on initial visual inspection, we  aimed to create some wordlists containing all possible keys from the memory dumps and then ran a brute force to locate a known Plaintext ("KEEP ALIVE") from a known CipherText ("pxzvI67XgjxDyL0SRR2S2g==")
+After dumping memory and failing to locate valid keys on initial visual inspection (at 3am it did not cross our minds to run a CC:FromHex(hex_string) on the suspicious strings). Instead we aimed to create some wordlists containing all possible keys from the memory dumps and then ran a brute force to locate a known Plaintext ("KEEP ALIVE") from a known CipherText ("pxzvI67XgjxDyL0SRR2S2g=="). In theory, if you take every 32 byte segment of data in memory and the AES key is 32 bytes then eventually you will find the key, the sliding window theory genenerates far fewer keys than a traditional brute force solution.
 
 First make your wordlists
 ```python
