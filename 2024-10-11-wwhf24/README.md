@@ -8,7 +8,7 @@ Team
 -  [author] Cooper Wiegand / shiloh (@cw0)
 
 ## Intro
-Badge Website & Leaderboard: https://hardwarelabs.io/
+Badge Website & Leaderboard: https://hardwarelabs.io/ (also 'strings-able' from firmware)
 
 _todo: intro, setup, cmds to dump initial firmware_
 
