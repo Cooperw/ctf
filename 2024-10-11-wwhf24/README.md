@@ -416,8 +416,7 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,fal
 
 From the firmware we discovered the POST endpoint used by the scanners to claim bounties when an attendee's badge was read via NFC. After playing with the request body and attaching a Bearer token extracted from firmware, we managed to craft the proper requests to grant bounties to any badge!
 
-- todo expand on how we came to this conclusion
-- todo talk about how to capture badge NFC UID with flipper, proxmark, or smartphone
+We had been playing with this endpoint for hours but not until we managed to get some serial log data from a scanner did we realize that the `rfid` field needed to have the uid in a lowercase-no-spaces format. Simply use and NFC reader to capture your badge's NFC UID. A flipper, proxmark, or smartphone with the NFCTools app will do.
 
 ```bash
 # [POST]
@@ -433,9 +432,9 @@ Bearer W8nqEekeZ2a4LeXVVuQ2yNYwRrsDYT
 }
 ```
 
-- todo talk about building MAC wordlists to isolate OUI regions hoping to locate Event 5"
+- todo talk about building MAC wordlists to isolate OUI regions hoping to locate the missing Event 5"
 
-In our quest to grant ourselves "Event 5" we managed to uncover a hidden vendor bounty worth 100 points from scanner EC:DA:3B:5E:17:30 which allowed us to have 26/25 vendor bounties, effectively pushing our scores above the standard achievable score.
+In our quest to grant ourselves "Event 5" we managed to uncover a hidden vendor bounty worth 100 points from scanner EC:DA:3B:5E:17:30 which allowed us to have 26/25 vendor bounties, effectively pushing our scores above the standard achievable score. Thanks @Logix for the discovery, honestly the burst of addrenaline at 1am pushed us to finish solving the final [Challenge 4 | Mystery Signal](https://github.com/Cooperw/ctf/tree/master/2024-10-11-wwhf24#challenge-4--mystery-signal)!
 
 We then developed a script which when given an NFC UID, automatically claims all vendor, stage, and event bounties. We never were able to trigger staff bounties or "event 5" which we later learned was not avaiable due to technical issues.
 ```python
