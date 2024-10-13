@@ -210,7 +210,7 @@ _We tried a combination of 8byte/16byte keys for DES and 16byte/32byte keys for 
 First make your wordlists
 ```python
 # Keymaker :: GPT-4o
-# We created an 8byte, 16byte, and a 32byte
+# We ran 3 times to create 8byte, 16byte, and 32byte versions
 
 from timeit import default_timer as timer
 from binascii import b2a_hex
