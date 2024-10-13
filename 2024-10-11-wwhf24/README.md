@@ -438,7 +438,10 @@ In our quest to grant ourselves "Event 5" we managed to uncover a hidden vendor 
 
 We then developed a script which when given an NFC UID, automatically claims all vendor, stage, and event bounties. We never were able to trigger staff bounties or "event 5" which we later learned was not avaiable due to technical issues.
 ```python
+# claim_bounties.py :: GPT-4o
+
 # usage: python claim_bounties.py 7bdfd941
+
 import requests
 import sys
 import argparse
