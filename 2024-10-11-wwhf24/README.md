@@ -10,19 +10,27 @@ Team
 
 _todo: intro, setup, cmds to dump initial firmware_
 
-Running the following cmd on a firmware dump will give you an S3 bucket containing the official badge binary and also happens to contain WIFI creds for the badge network if you are interested in spinning up an access point at home
+We discovered this data by manually scrolling through firmware but running the following cmd on a firmware dump will give you an S3 bucket containing the official badge binary, WIFI creds for the badge network if you are interested in spinning up an access point at home, and the connection data for MQTT
 ```bash
-> strings wwhf2024.bin | grep http -A 4
-https://wwhf2024.s3.amazonaws.com/v2/
-wwhf2024.bin
-WWHF Badges
-77HackTheEsp3too@
-...
+strings wwhf2024.bin | grep "\.com" -A 4
 ```
 
-Firmware: https://wwhf2024.s3.amazonaws.com/v2/wwhf2024.bin
+Firmware:https://wwhf2024.s3.amazonaws.com/v2/wwhf2024.bin
 
-WIFI: WWHF Badges :: 77HackTheEsp3too@
+WIFI:
+```bash
+WWHF Badges # SSID
+77HackTheEsp3too@ # Password
+```
+
+MQTT:
+```bash
+w6e1deed.ala.us-east-1.emqxsl.com # url
+broadcast/action # channel
+events/device # channel
+badges # username
+TPY_net1pvg*ywf.cjk # password
+```
 
 ## Challenge 1 | The UFO
 
@@ -133,7 +141,7 @@ HACKTHESIGNALS
 ## Challenge 4 | Mystery Signal
 
 ### Phase 1: Tap into MQTT
-- todo how we discovered connection params from nvs data in the firmware
+Using the connection params discovered in the firmware (see top of writeup), we tapped into the MQTT data feeds using the following commands.
 
 Subscribe to broadcasts
 ```bash
@@ -157,19 +165,19 @@ Mystery Signal captured from broadcasts (~every 30 mins when active? never reall
 
 ```
 
-_We suspected that the badge was capable of decrypting the data blob in order to process the broadcasts and found that both DES and AES:ECB generate block data consistent with variance and length observed in other MQTT messages._
-
-_todo expand on this further, especially how we noticed that MQTT message data blobs are encrypted in blocks based on input length and how the padding turns into "==" for small messages_
+We suspected that the badge was capable of decrypting the data blob in order to process the broadcasts and found that both DES and AES:ECB generate block data consistent with variance and length observed in other MQTT messages. MQTT message data blobs were encrypted in blocks based on input length and we assumed the recurring "==" was padding for message just under 'block size'.
 
 ### Phase 3: Dump the RAM, phising for keys!
-- My teamates discovered datasheets containing esp32-s3 memory segments. Check out these [S3 memory segments from @precurse](https://dl.espressif.com/public/esp32s3-mm.pdf)
+We examined the firmware for hours looking for anything resembling an AES key but eventually realized that the key must be being loaded into memory if the badge is to decrypt the data blobs so we decided to skip the obfuscation and get keys straight from runtime data.
+My teamates discovered datasheets containing esp32-s3 memory segments. Check out these [S3 memory segments from @precurse](https://dl.espressif.com/public/esp32s3-mm.pdf)
+
 To dump a memory segment, use the following command.
 ```bash
 esptool.py dump_mem 0x40380000 393216 out.bin # target memory region
 ```
 
 
-### Phase 4A: Finding AES Keys (optimal path)
+### Phase 4A: 'strings' AES Keys (optimal path)
 1. While scrolling through memory dumps we found that `63a5fd59688e04a7` was being repeated near each piece of broadcast data, very suspicious to have a 16 character hex string near our encrypted data
 ```bash
 > strings out.bin | awk 'length($0) == 16'
