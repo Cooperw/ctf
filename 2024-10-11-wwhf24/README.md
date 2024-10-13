@@ -15,7 +15,7 @@ We discovered this data by manually scrolling through firmware but running the f
 strings wwhf2024.bin | grep "\.com" -A 4
 ```
 
-Firmware:https://wwhf2024.s3.amazonaws.com/v2/wwhf2024.bin
+Firmware: https://wwhf2024.s3.amazonaws.com/v2/wwhf2024.bin
 
 WIFI:
 ```bash
