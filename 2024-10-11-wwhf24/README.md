@@ -7,6 +7,14 @@ Team
 - Rob Sullivan (@rsulliva)
 -  [author] Cooper Wiegand / shiloh (@cw0)
 
+## Sections
+
+- [Challenge 1 | The UFO](https://github.com/Cooperw/ctf/tree/master/2024-10-11-wwhf24#challenge-1--the-ufo)
+- [Challenge 2 | Serial](https://github.com/Cooperw/ctf/tree/master/2024-10-11-wwhf24#challenge-2--serial)
+- [Challenge 3 | Morse](https://github.com/Cooperw/ctf/tree/master/2024-10-11-wwhf24#challenge-3--morse)
+- [Challenge 4 | Mystery Signal](https://github.com/Cooperw/ctf/tree/master/2024-10-11-wwhf24#challenge-4--mystery-signal)
+- [Bonus Points!](https://github.com/Cooperw/ctf/tree/master/2024-10-11-wwhf24#bonus-points-100)
+
 ## Intro
 Badge Website & Leaderboard: https://hardwarelabs.io/ (also 'strings-able' from firmware)
 
