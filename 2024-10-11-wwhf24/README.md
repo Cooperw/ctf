@@ -5,7 +5,7 @@ Team
 - Victor Yakovlyev / chickn nuggies (@chickinnuggies)
 - Jay Sullivan / vort (@vort4282)
 - Rob Sullivan (@rsulliva)
-- Cooper Wiegand / shiloh (@cw0) [author]
+-  [author] Cooper Wiegand / shiloh (@cw0)
 
 
 _todo: intro, setup, cmds to dump initial firmware_
