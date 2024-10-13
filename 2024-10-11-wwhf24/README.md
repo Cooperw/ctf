@@ -8,9 +8,9 @@ Team
 - Cooper Wiegand / shiloh (@cw0)
 
 
-_todo: intro, setup, cmds to dump firmware and then how to pull a copy from the hosted aws S3 bucket_
+_todo: intro, setup, cmds to dump initial firmware_
 
-Running the following cmd on a firmware dump will give you an S3 bucket containing the badge binary and also happens to contain WIFI creds for the badge network if you are interested in spinning up an access point at home
+Running the following cmd on a firmware dump will give you an S3 bucket containing the official badge binary and also happens to contain WIFI creds for the badge network if you are interested in spinning up an access point at home
 ```bash
 > strings wwhf2024.bin | grep http -A 4
 https://wwhf2024.s3.amazonaws.com/v2/
@@ -125,7 +125,7 @@ https://gchq.github.io/CyberChef/#recipe=ROT13(true,true,false,13)&input=RlZUe3J
 hackthesignals
 ```
 
-4. Assuming caps and spaces, the flag is in a non-standard format and is simply
+4. Assuming standard morese caps, the flag is in a non-standard format and is simply
 ```
 HACKTHESIGNALS
 ```
@@ -133,7 +133,7 @@ HACKTHESIGNALS
 ## Challenge 4 | Mystery Signal
 
 ### Phase 1: Tap into MQTT
-- todo how we discovered connection params
+- todo how we discovered connection params from nvs data in the firmware
 
 Subscribe to broadcasts
 ```bash
@@ -145,7 +145,7 @@ mosquitto_sub -h w6e1deed.ala.us-east-1.emqxsl.com -p 8883 -u "badges" -P "TPY_n
 ```
 
 ### Phase 2: Monitor for broadcasts and eventually capture the "Mystery Signal"
-Mystery Signal captured from broadcasts (~every 30 mins when active?)
+Mystery Signal captured from broadcasts (~every 30 mins when active? never really nailed this down)
 ```json
 {
   "broadcast_event": 12,
@@ -157,19 +157,17 @@ Mystery Signal captured from broadcasts (~every 30 mins when active?)
 
 ```
 
-_We suspected that the badge was capable of decrypting the data blob in order to process the broadcasts and found that both DES and AES:ECB generate block data consistent with variance and length observed in other MQTT messages_
+_We suspected that the badge was capable of decrypting the data blob in order to process the broadcasts and found that both DES and AES:ECB generate block data consistent with variance and length observed in other MQTT messages._
+
+_todo expand on this further, especially how we noticed that MQTT message data blobs are encrypted in blocks based on input length and how the padding turns into "==" for small messages_
 
 ### Phase 3: Dump the RAM, phising for keys!
 - My teamates discovered datasheets containing esp32-s3 memory segments. Check out these [S3 memory segments from @precurse](https://dl.espressif.com/public/esp32s3-mm.pdf)
-```bash
--rw-r--r--@  1 cooper  staff    64K Oct 11 01:51 memdumptest5-0x3FF0_0000.bin
--rw-r--r--@  1 cooper  staff   384K Oct 11 01:52 memdumptest5-0x4038_0000.bin
--rw-r--r--@  1 cooper  staff    32K Oct 11 01:52 memdumptest5-0x437_8000.bin
-```
-To dump the memory segment, run the following command
+To dump a memory segment, use the following command.
 ```bash
 esptool.py dump_mem 0x40380000 393216 out.bin # target memory region
 ```
+
 
 ### Phase 4A: Finding AES Keys (optimal path)
 1. While scrolling through memory dumps we found that `63a5fd59688e04a7` was being repeated near each piece of broadcast data, very suspicious to have a 16 character hex string near our encrypted data
@@ -399,9 +397,10 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,fal
 
 ## Bonus Points! (100)
 
-From the firmware we discovered the POST endpoint used by the scanners to claim bounties when an attendees badge was read via NFC. After playing with the request body and attaching a Bearer token extracted from firmware, we managed to craft the proper requests to grant bounties to any badge!
+From the firmware we discovered the POST endpoint used by the scanners to claim bounties when an attendee's badge was read via NFC. After playing with the request body and attaching a Bearer token extracted from firmware, we managed to craft the proper requests to grant bounties to any badge!
 
 - todo expand on how we came to this conclusion
+- todo talk about how to capture badge NFC UID with flipper, proxmark, or smartphone
 
 ```bash
 # [POST]
@@ -417,13 +416,11 @@ Bearer W8nqEekeZ2a4LeXVVuQ2yNYwRrsDYT
 }
 ```
 
-- todo talk about building mac wordlists to isolate MAC regions to locate Event 5"
+- todo talk about building mac wordlists to isolate MAC regions hoping to locate Event 5"
 
 In our quest to grant ourselves "Event 5" we managed to uncover a hidden vendor bounty worth 100 points from scanner EC:DA:3B:5E:17:30 which allowed us to have 26/25 vendor bounties, effectively pushing our scores above the standard achievable score.
 
-- todo talk about how to capture badge NFC UID with flipper, proxmark, or smartphone
-
-We then developed a script which when given an NFC UID, automatically claims all vendor, stage, and event bounties
+We then developed a script which when given an NFC UID, automatically claims all vendor, stage, and event bounties. We never were able to trigger staff bounties or "event 5" which we later learned was not avaiable due to technical issues.
 ```python
 # usage: python claim_bounties.py 7bdfd941
 import requests
