@@ -1,14 +1,14 @@
 # Wild West Hacking Fest 2024 Badge Challenge
 
 Team
-- Stephen Glom
-- Victor Yakovlyev
-- Job Sullivan
-- Rob Sullivan
-- Cooper Wiegand (@cooperw)
+- Stephen Glom / Logix (@ladderlogic)
+- Victor Yakovlyev / chickn nuggies (@chickinnuggies)
+- Jay Sullivan / vort (@vort4282)
+- Rob Sullivan (@rsulliva)
+- Cooper Wiegand / shiloh (@cw0)
 
 
-_todo talk about how do dump firmware and then pull a copy from the hosted aws S3 bucket_
+_todo: steup, cmds to dump firmware and then how do pull a copy from the hosted aws S3 bucket_
 
 ## Challenge 1 | The UFO
 
@@ -146,18 +146,19 @@ Mystery Signal captured from broadcasts (~every 30 mins when active?)
 _We suspected that the badge was capable of decrypting the data blob in order to process the broadcasts and found that both DES and AES:ECB generate block data consistent with variance and length observed in other MQTT messages_
 
 ### Phase 3: Dump the RAM, phising for keys!
-- todo mention how the sullivans discovered datasheets containing memory segments to dump
+- My teamates discovered datasheets containing esp32-s3 memory segments. Check out these [S3 memory segments from @precurse](https://dl.espressif.com/public/esp32s3-mm.pdf)
 ```bash
 -rw-r--r--@  1 cooper  staff    64K Oct 11 01:51 memdumptest5-0x3FF0_0000.bin
 -rw-r--r--@  1 cooper  staff   384K Oct 11 01:52 memdumptest5-0x4038_0000.bin
 -rw-r--r--@  1 cooper  staff    32K Oct 11 01:52 memdumptest5-0x437_8000.bin
 ```
+To dump the memory segment, run the following command
 ```bash
 esptool.py dump_mem 0x40380000 393216 out.bin # target memory region
 ```
 
 ### Phase 4A: Finding AES Keys (optimal path)
-1. String out expected length strings
+1. While scrolling through memory dumps we found that `63a5fd59688e04a7` was being repeated near each piece of broadcast data, very suspicious to have a 16 character hex string near our encrypted data
 ```bash
 > strings out.bin | awk 'length($0) == 16'
 ...
