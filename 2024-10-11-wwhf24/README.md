@@ -1,11 +1,13 @@
 # Wild West Hacking Fest 2024 Badge Challenge
 
+This writeup is my personal account but please see our official [writeup by Logix](http://wwhf2024.ics.red/preface.html)
+
 Team
-- Stephen Glom / Logix (@ladderlogic)
-- Victor Yakovlyev / chickn nuggies (@chickinnuggies)
+- Stephen Glombicki / Logix (@ladderlogic)
+- Viktor Yakovlyev / chickn nuggies (@chickinnuggies)
 - Jon Sullivan / vort (@vort4282)
 - Rob Sullivan (@rsulliva)
--  [author] Cooper Wiegand / shiloh (@cw0)
+- Cooper Wiegand / shiloh (@cw0)
 
 ## Sections
 
