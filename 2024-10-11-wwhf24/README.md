@@ -180,13 +180,12 @@ We suspected that the badge was capable of decrypting the data blob in order to 
 We examined the firmware for hours looking for anything resembling an AES key but eventually realized that the key must be being loaded into memory if the badge is to decrypt the data blobs so we decided to skip the obfuscation and get keys straight from runtime data.
 My teamates discovered datasheets containing esp32-s3 memory segments. Check out these [S3 memory segments from @precurse](https://dl.espressif.com/public/esp32s3-mm.pdf)
 
+_some of these addresses might be a bit off but as long as you target the bulk of SRAM1 you will be good_
+
 To dump a memory segment, use the following command.
 ```bash
 esptool.py dump_mem 0x40380000 393216 out.bin # target memory region
 ```
-
-_some of these addresses might be a bit off but as long as you target the bulk of SRAM1 you will be good_
-
 
 ### Phase 4A: 'strings' AES Keys (optimal path)
 1. While scrolling through memory dumps we found that `63a5fd59688e04a7` was being repeated near each piece of broadcast data, very suspicious to have a 16 character hex string near our encrypted data
