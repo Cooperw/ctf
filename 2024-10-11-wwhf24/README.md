@@ -185,6 +185,8 @@ To dump a memory segment, use the following command.
 esptool.py dump_mem 0x40380000 393216 out.bin # target memory region
 ```
 
+_some of these addresses might be a bit off but as long as you target the bulk of SRAM1 you will be good_
+
 
 ### Phase 4A: 'strings' AES Keys (optimal path)
 1. While scrolling through memory dumps we found that `63a5fd59688e04a7` was being repeated near each piece of broadcast data, very suspicious to have a 16 character hex string near our encrypted data
