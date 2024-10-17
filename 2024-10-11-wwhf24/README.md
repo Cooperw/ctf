@@ -461,12 +461,17 @@ f4b4d940 logix
 fcb9d940 alex
 a3c9d940 rsulliva
 57b4d940 netwarsninja66
+8a4fd940 lasso
 '''
 
 def main():
     # Define the list of MAC addresses
     mac_addresses = [
+        "24:58:7C:C4:AE:4C", # valid, live, unknown
+        "C0:4E:30:14:0F:98", # staff bounty 1
+        "48:27:E2:76:DF:C8", # staff bounty 2
         "EC:DA:3B:5D:D0:7C",
+        # "EC:DA:3B:5D:BF:64" # valid, 0 pts
         "EC:DA:3B:5E:0C:24",
         "EC:DA:3B:5E:0C:34",
         "EC:DA:3B:5E:0C:88",
@@ -485,6 +490,11 @@ def main():
         "EC:DA:3B:5E:1F:80",
         "EC:DA:3B:5E:1F:C8",
         "EC:DA:3B:5E:48:30",
+        # "EC:DA:3B:5E:48:74", # valid, 0 pts
+        # "EC:DA:3B:5E:4A:14", # valid, 0 pts
+        # "EC:DA:3B:5E:4A:18", # valid, 0 pts
+        # "EC:DA:3B:5E:4A:D4", # valid, 0 pts
+        # "EC:DA:3B:5E:4A:D8", # valid, 0 pts
         "EC:DA:3B:5E:53:F8",
         "EC:DA:3B:5E:6D:48",
         "EC:DA:3B:5E:6D:54",
@@ -499,7 +509,7 @@ def main():
         "EC:DA:3B:5F:FD:B4",
         "EC:DA:3B:5F:FD:C0",
         "EC:DA:3B:5F:FD:C4",
-        "EC:DA:3B:5E:17:30" # unlisted
+        "EC:DA:3B:5E:17:30", # unlisted vendor, 100 pts
     ]
 
     # Set up command-line argument parsing
@@ -543,9 +553,9 @@ def main():
             error_count += 1
             print(f"EXCEPTION[{index}/{len(mac_addresses)}]: MAC {mac} - {e}")
 
-        # Rate limiting: Wait for 5 seconds before the next request, except after the last request
+        # Rate limiting
         if index < len(mac_addresses):
-            time.sleep(5)  # Pause for 5 seconds
+            time.sleep(0.1)
 
     print("\n=== Summary ===")
     print(f"Total Requests: {len(mac_addresses)}")
@@ -554,5 +564,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
