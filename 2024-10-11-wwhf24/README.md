@@ -1,5 +1,6 @@
 # Wild West Hacking Fest 2024 Badge Challenge
 
+This writeup is my personal quick summary. For our complete and official writeup by Logix, please visit [http://badge.ics.red](http://badge.ics.red/preface.html)
 
 Team
 - Stephen Glombicki / Logix (@ladderlogic)
